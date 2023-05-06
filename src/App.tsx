@@ -30,16 +30,16 @@ function App() {
         console.log(e.message)
       }
     }
-    if (isAuthenticated) {
-      getToken()
-    }
+    getToken()
+    // firefoxでリロード時にログインされないのは火孤のcookie関連の設定の模様。(chrome では再現せず)
+    //この辺の対応が必要そう　https://future-architect.github.io/articles/20221007a/
   }, [])
 
   const createPosts = async () => {
     const accessToken = await getAccessTokenSilently({})
     const headers = {
       headers: {
-        Authorization: accessToken,
+        Authorization: token,
         'Content-Type': 'application/json',
       }
     }

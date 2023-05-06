@@ -21,6 +21,7 @@ root.render(
         redirect_uri: window.location.origin,
         audience: audience,
       }}
+      // useRefreshTokens={true} これがいる？　=> なくていけた。firefoxのcookie関連の設定のせい。
     >
       <App />
     </Auth0Provider>
